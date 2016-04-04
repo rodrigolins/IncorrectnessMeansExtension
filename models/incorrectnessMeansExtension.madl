@@ -1,0 +1,18 @@
+import "platform:/plugin/org.qualitune.smags.architecture.dsl/resources/StandardTypes.madl";
+import "../../SmagRE/models/AdaptationArchitecture.madl";
+import "../../SmagRE/models/CommonLib.madl";
+
+namespace "incorrectnessMeansExtension";
+
+meta architecture IncorrectnessMeansExtensionMetaArchitecture{
+	sensor units:
+
+	type libraries:
+
+	port types:
+
+	component types:
+
+	sensor types:
+
+}
