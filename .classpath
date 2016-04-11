@@ -4,5 +4,19 @@
 	<classpathentry kind="src" path="/SmagRE"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry kind="lib" path="libs/httpclient-4.5.jar"/>
+	<classpathentry kind="lib" path="libs/httpclient-cache-4.5.jar"/>
+	<classpathentry kind="lib" path="libs/httpclient-win-4.5.jar"/>
+	<classpathentry kind="lib" path="libs/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="libs/httpmime-4.5.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-api-2.5.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-core-2.5.jar"/>
+	<classpathentry kind="lib" path="libs/gson-2.3.1.jar" sourcepath="libs/gson-2.3.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/IncorrectnessMeansExtension/libs/gson-2.3.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/RXTXcomm.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

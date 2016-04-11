@@ -8,10 +8,89 @@ meta architecture IncorrectnessMeansExtensionMetaArchitecture{
 	sensor units:
 
 	type libraries:
+	type library ArduinoSamplingDataTypes {
+        complex ArduinoValue {
+        	property id : Integer;
+        	property sensorType : String;
+        	property model : String;
+        	property manufacturer : String;
+        	property properties : List<ArduinoProperty>;
+        }
+        complex ArduinoProperty {
+        	property name : String;
+        	property value : Double;
+        	property unit : String; // Unit???
+        }
+    }
+    
+    type library SensorManagerDataTypes {
+    	complex PropertyType {
+    		property id : Long;
+    		property name : String;
+    	}
+    	enum PropertyBoundary {
+    		EQ,
+    		GT,
+    		LT,
+    		DV
+    	}
+    	complex Property {
+    		property id : Long;
+    		property propertyType : PropertyType;
+    		property value : Float;
+    		property unit : String;
+    		property boundary : PropertyBoundary;
+    	}
+    	complex SensorType {
+    		property id : Long;
+    		property name : String;
+    	}
+    	complex Sensor {
+    		property id : Long;
+    		property sensorType : SensorType;
+    		property model : String;
+    		property manufacturer : String;
+    		property properties : List<Property>;
+    	}
+    	enum TimedPropertyBoundary {
+    		IC,
+    		DC,
+    		DE
+    	}
+    	complex TimedProperty {
+    		property id : Long;
+    		property propertyType : PropertyType;
+    		property value : Float;
+    		property unit : String;
+    		property time : Long;
+    		property boundary : TimedPropertyBoundary;
+    		
+    	}
+    }
 
 	port types:
+	port type ISensorManagerProvider {
+		List<Sensor> getSensorsConfiguration();
+		List<TimedProperty> getTimedProperties();
+	}
+	
+	port type IArduinoSamplingProvider {
+		List<ArduinoValue> getArduinoSamples();
+	}
 
 	component types:
+	component type SensorManagerRepository {
+		provides ISensorManagerProvider;
+	}
+	
+	component type ArduinoSamplingRepository {
+		provides IArduinoSamplingProvider;
+	}
+	
+	component type ApplicationManager {
+		requires ISensorManagerProvider[0 to *];
+		requires IArduinoSamplingProvider[0 to *];
+	}
 
 	sensor types:
 

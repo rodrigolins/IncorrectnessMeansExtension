@@ -10,6 +10,7 @@ public class Starter {
 		re.initializeAdaptationArchitecture();
 
 		//Uncomment this after code generation
-		//incorrectnessMeansExtension.gen.initialization.Initializer.Initialize(re);
+		incorrectnessMeansExtension.gen.initialization.Initializer.initialize(re);
+		
 	}
 }
