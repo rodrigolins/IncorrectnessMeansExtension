@@ -15,4 +15,5 @@ public class PropertyType extends AbstractPropertyType {
 		return "PropertyType [getId()=" + getId() + ", getName()=" + getName()
 				+ "]";
 	}
+
 }

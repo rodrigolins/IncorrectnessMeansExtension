@@ -45,7 +45,7 @@ public class Initializer {
 		List<ReconfigurtionOperation> ops = new ArrayList<ReconfigurtionOperation>();
 
 		ops.add(new CreateComponentInstanceOperation("sensorManager",
-				JSensorManagerRepository.class));
+				JSensorManagerPropertyRepository.class));
 
 		ops.add(new CreateComponentInstanceOperation("arduinoManager",
 				JArduinoSamplingRepository.class));
@@ -54,7 +54,7 @@ public class Initializer {
 				JApplicationManager.class));
 
 		ops.add(new ConnectOperation("sensorManager", "applicationManager",
-				"ISensorManagerProvider"));
+				"ISensorManagerSensorProvider"));
 
 		ops.add(new ConnectOperation("arduinoManager", "applicationManager",
 				"IArduinoSamplingProvider"));
@@ -69,10 +69,10 @@ public class Initializer {
 				new ReconfigurationScript(ops));
 	}
 
-	public static JSensorManagerRepository getSensorManager() {
+	public static JSensorManagerPropertyRepository getSensorManager() {
 		return RuntimeEnvironment.instance().getRuntimeModel()
 				.getComponentByName(Initializer.SensorManager)
-				.as(JSensorManagerRepository.class);
+				.as(JSensorManagerPropertyRepository.class);
 	}
 
 	public static JArduinoSamplingRepository getArduinoManager() {

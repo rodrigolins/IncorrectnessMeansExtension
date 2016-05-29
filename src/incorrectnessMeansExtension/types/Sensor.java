@@ -8,8 +8,8 @@ public class Sensor extends AbstractSensor {
 	}
 
 	public Sensor(Long id, SensorType sensorType, String model,
-			String manufacturer, List<Property> properties) {
-		super(id, sensorType, model, manufacturer, properties);
+			String manufacturer, List<Property> properties, List<Rule> rules) {
+		super(id, sensorType, model, manufacturer, properties, rules);
 	}
 
 	@Override
@@ -17,7 +17,8 @@ public class Sensor extends AbstractSensor {
 		return "Sensor [getId()=" + getId() + ", getSensorType()="
 				+ getSensorType() + ", getModel()=" + getModel()
 				+ ", getManufacturer()=" + getManufacturer()
-				+ ", getProperties()=" + getProperties() + "]";
+				+ ", getProperties()=" + getProperties() + ", getRules()="
+				+ getRules() + "]";
 	}
 	
 	

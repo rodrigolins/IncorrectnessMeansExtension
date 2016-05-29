@@ -19,7 +19,4 @@ public class ArduinoValue extends AbstractArduinoValue {
 				+ ", getManufacturer()=" + getManufacturer()
 				+ ", getProperties()=" + getProperties() + "]";
 	}
-	
-	
-
 }

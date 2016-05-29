@@ -10,7 +10,7 @@ public class Property extends AbstractProperty {
 			String unit, PropertyBoundary boundary) {
 		super(id, propertyType, value, unit, boundary);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Property [getId()=" + getId() + ", getPropertyType()="
@@ -18,5 +18,5 @@ public class Property extends AbstractProperty {
 				+ ", getUnit()=" + getUnit() + ", getBoundary()="
 				+ getBoundary() + "]";
 	}
-	
+
 }

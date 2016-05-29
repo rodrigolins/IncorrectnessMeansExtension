@@ -10,7 +10,7 @@ app IncorrectnessMeansExtension {
 	ports:
 
 	components:
-	component JSensorManagerRepository implements SensorManagerRepository {
+	component JSensorManagerPropertyRepository implements SensorManagerPropertyRepository {
 		
 	}
 	
@@ -23,13 +23,12 @@ app IncorrectnessMeansExtension {
 	}
 
 	sensors:
-
 	initialization{
-		component sensorManager = new JSensorManagerRepository;
+		component sensorManager = new JSensorManagerPropertyRepository;
 		component arduinoManager = new JArduinoSamplingRepository;
-		component applicationManager = new JApplicationManager;
 		
-		connect applicationManager.ISensorManagerProvider to offer sensorManager;
+		component applicationManager = new JApplicationManager;
+		connect applicationManager.ISensorManagerSensorProvider to offer sensorManager;
 		connect applicationManager.IArduinoSamplingProvider to offer arduinoManager;
 	}
 }

@@ -15,6 +15,4 @@ public class ArduinoProperty extends AbstractArduinoProperty {
 		return "ArduinoProperty [getName()=" + getName() + ", getValue()="
 				+ getValue() + ", getUnit()=" + getUnit() + "]";
 	}
-
-	
 }

@@ -34,7 +34,8 @@ public class JArduinoSamplingRepository
 	}
 
 	public void setup() {
-		try {
+		System.out.println("Starting JArduinoSamplingRepository");
+		/*try {
             LOGGER.trace("Creating connection...");
             System.setProperty("gnu.io.rxtx.SerialPorts", Settings.PORT_NAME);
 
@@ -76,14 +77,14 @@ public class JArduinoSamplingRepository
         } catch (Exception e) {
             LOGGER.error("It was not possible to connect with arduino.");
             LOGGER.catching(e);
-        }
+        }*/
 	}
 
 	public void destroy() {
-		//TODO:Implement
+		System.out.println("Stopping JArduinoSamplingRepository");
 	}
 
-	public List<ArduinoValue> getArduinoSamplesImpl() {
+	public List<ArduinoValue> getArduinoSamplingImpl() {
 		//TODO: IMPLEMENT
 		return null;
 	}

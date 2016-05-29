@@ -36,17 +36,19 @@ public abstract class AbstractSensor {
 	private String model;
 	private String manufacturer;
 	private List<Property> properties;
+	private List<Rule> rules;
 
 	public AbstractSensor() {
 	}
 
 	public AbstractSensor(Long id, SensorType sensorType, String model,
-			String manufacturer, List<Property> properties) {
+			String manufacturer, List<Property> properties, List<Rule> rules) {
 		this.id = id;
 		this.sensorType = sensorType;
 		this.model = model;
 		this.manufacturer = manufacturer;
 		this.properties = properties;
+		this.rules = rules;
 	}
 
 	public Long getId() {
@@ -87,6 +89,14 @@ public abstract class AbstractSensor {
 
 	public void setProperties(List<Property> properties) {
 		this.properties = properties;
+	}
+
+	public List<Rule> getRules() {
+		return this.rules;
+	}
+
+	public void setRules(List<Rule> rules) {
+		this.rules = rules;
 	}
 
 }

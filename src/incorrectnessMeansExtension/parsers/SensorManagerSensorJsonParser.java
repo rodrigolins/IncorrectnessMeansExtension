@@ -17,7 +17,7 @@ public class SensorManagerSensorJsonParser {
 	private static JsonParser parser = new JsonParser();
 	
 	/*
-	 * Return only Sample objects
+	 * Return only Sensor objects
 	 * 
 	 * If the line is not well formed, return null
 	 */

@@ -41,28 +41,6 @@ public abstract class AbstractApplicationManager extends AbstractComponent
 			INotifyPropertyChanged {
 
 	@RequirementA
-	private List<ISensorManagerProvider> iSensorManagerProviders = new ArrayList<ISensorManagerProvider>();
-
-	public List<ISensorManagerProvider> getISensorManagerProviders() {
-		return this.iSensorManagerProviders;
-	}
-
-	public void addISensorManagerProvider(ISensorManagerProvider item) {
-		this.iSensorManagerProviders.add(item);
-		handleISensorManagerProviderAdded(item);
-	}
-
-	public void removeISensorManagerProvider(ISensorManagerProvider item) {
-		this.iSensorManagerProviders.remove(item);
-		handleISensorManagerProviderRemoved(item);
-	}
-
-	public abstract void handleISensorManagerProviderAdded(
-			ISensorManagerProvider item);
-	public abstract void handleISensorManagerProviderRemoved(
-			ISensorManagerProvider item);
-
-	@RequirementA
 	private List<IArduinoSamplingProvider> iArduinoSamplingProviders = new ArrayList<IArduinoSamplingProvider>();
 
 	public List<IArduinoSamplingProvider> getIArduinoSamplingProviders() {
@@ -83,6 +61,30 @@ public abstract class AbstractApplicationManager extends AbstractComponent
 			IArduinoSamplingProvider item);
 	public abstract void handleIArduinoSamplingProviderRemoved(
 			IArduinoSamplingProvider item);
+
+	@RequirementA
+	private List<ISensorManagerSensorProvider> iSensorManagerSensorProviders = new ArrayList<ISensorManagerSensorProvider>();
+
+	public List<ISensorManagerSensorProvider> getISensorManagerSensorProviders() {
+		return this.iSensorManagerSensorProviders;
+	}
+
+	public void addISensorManagerSensorProvider(
+			ISensorManagerSensorProvider item) {
+		this.iSensorManagerSensorProviders.add(item);
+		handleISensorManagerSensorProviderAdded(item);
+	}
+
+	public void removeISensorManagerSensorProvider(
+			ISensorManagerSensorProvider item) {
+		this.iSensorManagerSensorProviders.remove(item);
+		handleISensorManagerSensorProviderRemoved(item);
+	}
+
+	public abstract void handleISensorManagerSensorProviderAdded(
+			ISensorManagerSensorProvider item);
+	public abstract void handleISensorManagerSensorProviderRemoved(
+			ISensorManagerSensorProvider item);
 
 	public AbstractApplicationManager(String name) {
 		super(name);

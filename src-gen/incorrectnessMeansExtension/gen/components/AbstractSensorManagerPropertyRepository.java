@@ -35,26 +35,26 @@ import org.smags.reflection.ReflectionHelper;
 import org.smags.componentmodel.parameter.INotifyPropertyChanged;
 import org.smags.componentmodel.annotations.Component;
 
-@Component(name = "ArduinoSamplingRepository", appName = "IncorrectnessMeansExtensionMetaArchitecture", appPackageName = "incorrectnessMeansExtension", componentTypeName = "ArduinoSamplingRepository", typeArchitectureName = "IncorrectnessMeansExtensionMetaArchitecture", typeArchitectureNamespace = "incorrectnessMeansExtension")
-public abstract class AbstractArduinoSamplingRepository
+@Component(name = "SensorManagerPropertyRepository", appName = "IncorrectnessMeansExtensionMetaArchitecture", appPackageName = "incorrectnessMeansExtension", componentTypeName = "SensorManagerPropertyRepository", typeArchitectureName = "IncorrectnessMeansExtensionMetaArchitecture", typeArchitectureNamespace = "incorrectnessMeansExtension")
+public abstract class AbstractSensorManagerPropertyRepository
 		extends
 			AbstractComponent
 		implements
 			INotifyPropertyChanged,
-			IArduinoSamplingProvider {
+			ISensorManagerSensorProvider {
 
-	private final List<IArduinoSamplingProvider> iArduinoSamplingProviderRoles = new ArrayList<IArduinoSamplingProvider>();
+	private final List<ISensorManagerSensorProvider> iSensorManagerSensorProviderRoles = new ArrayList<ISensorManagerSensorProvider>();
 
-	public AbstractArduinoSamplingRepository(String name) {
+	public AbstractSensorManagerPropertyRepository(String name) {
 		super(name);
 	}
 
 	@Override
 	protected <T> T innerGetPort(Class<T> type) {
 
-		if (type == IArduinoSamplingProvider.class)
-			return iArduinoSamplingProviderRoles.size() > 0
-					? (T) iArduinoSamplingProviderRoles.get(0)
+		if (type == ISensorManagerSensorProvider.class)
+			return iSensorManagerSensorProviderRoles.size() > 0
+					? (T) iSensorManagerSensorProviderRoles.get(0)
 					: (T) this;
 
 		return null;
@@ -63,9 +63,9 @@ public abstract class AbstractArduinoSamplingRepository
 	@Override
 	public boolean innerBindPort(IPort port) {
 
-		if (port instanceof IArduinoSamplingProvider) {
-			iArduinoSamplingProviderRoles.add(0,
-					(IArduinoSamplingProvider) port);
+		if (port instanceof ISensorManagerSensorProvider) {
+			iSensorManagerSensorProviderRoles.add(0,
+					(ISensorManagerSensorProvider) port);
 			return true;
 		}
 
@@ -75,27 +75,28 @@ public abstract class AbstractArduinoSamplingRepository
 	@Override
 	public boolean innerUnbindPort(IPort port) {
 
-		if (port instanceof IArduinoSamplingProvider
-				&& iArduinoSamplingProviderRoles.contains(port)) {
-			iArduinoSamplingProviderRoles.remove(port);
+		if (port instanceof ISensorManagerSensorProvider
+				&& iSensorManagerSensorProviderRoles.contains(port)) {
+			iSensorManagerSensorProviderRoles.remove(port);
 			return true;
 		}
 
 		return false;
 	}
 
-	public List<ArduinoValue> getArduinoSampling() {
+	public List<Sensor> getSensors() {
 
 		int countInCallStack = ReflectionHelper.countContainedInCallStack(
-				"getArduinoSampling", this);
+				"getSensors", this);
 
-		if (countInCallStack > 1 || iArduinoSamplingProviderRoles.size() == 0)
-			return getArduinoSamplingImpl();
+		if (countInCallStack > 1
+				|| iSensorManagerSensorProviderRoles.size() == 0)
+			return getSensorsImpl();
 		else
-			return iArduinoSamplingProviderRoles.get(0).getArduinoSampling();
+			return iSensorManagerSensorProviderRoles.get(0).getSensors();
 
 	}
 
-	public abstract List<ArduinoValue> getArduinoSamplingImpl();
+	public abstract List<Sensor> getSensorsImpl();
 
 }

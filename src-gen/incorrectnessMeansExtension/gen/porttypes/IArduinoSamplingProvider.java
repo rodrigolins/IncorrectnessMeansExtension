@@ -38,7 +38,7 @@ public interface IArduinoSamplingProvider {
 	public static Class remotePortClass = IArduinoSamplingProviderRemote.class;
 	public static Class proxyComponentClass = IArduinoSamplingProviderRemoteProxy.class;
 
-	public List<ArduinoValue> getArduinoSamples();
+	public List<ArduinoValue> getArduinoSampling();
 
 	public <T> T as(Class<T> c);
 
@@ -54,8 +54,8 @@ public interface IArduinoSamplingProvider {
 			super(name, IArduinoSamplingProvider.class);
 		}
 
-		public List<ArduinoValue> getArduinoSamples() {
-			List<ArduinoValue> result = base.getArduinoSamples();
+		public List<ArduinoValue> getArduinoSampling() {
+			List<ArduinoValue> result = base.getArduinoSampling();
 			return result;
 		}
 
@@ -91,21 +91,21 @@ public interface IArduinoSamplingProvider {
 			return null;
 		}
 
-		public List<ArduinoValue> getArduinoSamples() {
-			GetArduinoSamplesRemoteMessage in = new GetArduinoSamplesRemoteMessage();
+		public List<ArduinoValue> getArduinoSampling() {
+			GetArduinoSamplingRemoteMessage in = new GetArduinoSamplingRemoteMessage();
 
-			return ((GetArduinoSamplesRemoteMessage) client.send(in,
-					GetArduinoSamplesRemoteMessage.class)).getResponseResult();
+			return ((GetArduinoSamplingRemoteMessage) client.send(in,
+					GetArduinoSamplingRemoteMessage.class)).getResponseResult();
 		}
 
 	}
 
-	public class GetArduinoSamplesRemoteMessage
+	public class GetArduinoSamplingRemoteMessage
 			extends
 				RemoteMessageBase<List<ArduinoValue>> {
 
-		public GetArduinoSamplesRemoteMessage() {
-			super("getArduinoSamples");
+		public GetArduinoSamplingRemoteMessage() {
+			super("getArduinoSampling");
 		}
 
 		@Override

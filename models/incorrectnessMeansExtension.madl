@@ -19,7 +19,7 @@ meta architecture IncorrectnessMeansExtensionMetaArchitecture{
         complex ArduinoProperty {
         	property name : String;
         	property value : Double;
-        	property unit : String; // Unit???
+        	property unit : String;
         }
     }
     
@@ -51,36 +51,36 @@ meta architecture IncorrectnessMeansExtensionMetaArchitecture{
     		property model : String;
     		property manufacturer : String;
     		property properties : List<Property>;
+    		property rules : List<Rule>;
     	}
-    	enum TimedPropertyBoundary {
+    	enum RuleBoundary {
     		IC,
     		DC,
     		DE
     	}
-    	complex TimedProperty {
+    	complex Rule {
     		property id : Long;
     		property propertyType : PropertyType;
     		property value : Float;
     		property unit : String;
     		property time : Long;
-    		property boundary : TimedPropertyBoundary;
+    		property boundary : RuleBoundary;
     		
     	}
     }
 
 	port types:
-	port type ISensorManagerProvider {
-		List<Sensor> getSensorsConfiguration();
-		List<TimedProperty> getTimedProperties();
+	port type ISensorManagerSensorProvider {
+		List<Sensor> getSensors();
 	}
 	
 	port type IArduinoSamplingProvider {
-		List<ArduinoValue> getArduinoSamples();
+		List<ArduinoValue> getArduinoSampling();
 	}
 
 	component types:
-	component type SensorManagerRepository {
-		provides ISensorManagerProvider;
+	component type SensorManagerPropertyRepository {
+		provides ISensorManagerSensorProvider;
 	}
 	
 	component type ArduinoSamplingRepository {
@@ -88,7 +88,7 @@ meta architecture IncorrectnessMeansExtensionMetaArchitecture{
 	}
 	
 	component type ApplicationManager {
-		requires ISensorManagerProvider[0 to *];
+		requires ISensorManagerSensorProvider[0 to *];
 		requires IArduinoSamplingProvider[0 to *];
 	}
 
