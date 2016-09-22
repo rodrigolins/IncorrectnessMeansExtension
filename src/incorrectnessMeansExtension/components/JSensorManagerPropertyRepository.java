@@ -20,14 +20,18 @@ public class JSensorManagerPropertyRepository extends AbstractSensorManagerPrope
 		System.out.println("Starting JSensorManagerPropertyRepository");
 		System.out.println("Starting HTTP Client");
 		APIHTTPClient client = new APIHTTPClient(Settings.PROPERTY_MANAGER_ENDPOINT);
+		
 		System.out.println("Connecting to HTTP Client");
 		client.connect();
-		
 		try {
             System.out.println("Trying to get all sensor properties");
-            String result = client.getAllSensorProperties();
-            sensors = SensorManagerSensorJsonParser.parse(result);
+            String sensorProperties = client.getAllSensorProperties();
+            sensors = SensorManagerSensorJsonParser.parse(sensorProperties);
             System.out.println("Sensor List: " + sensors);
+            for(Sensor sensor : sensors) {
+            		System.out.println(sensor);
+            }
+            
         } catch (Exception e) {
             System.out.println("Error to connect sensor manager");
             System.out.println(e);
